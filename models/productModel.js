@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-const reviewSchema = mongoose.Schema(
+const { Schema } = mongoose;
+const reviewSchema = new Schema(
   {
     name: {
       type: String,
@@ -16,7 +17,7 @@ const reviewSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-const productSchema = mongoose.Schema(
+const productSchema = new Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
