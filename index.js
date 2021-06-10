@@ -22,6 +22,7 @@ app.use(express.json());
 app.use("/api/products", productRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/config/paypal", (req, res) => res.send(process.env.PAY_CLIENT));
 
 app.get("/", (req, res) => {
   res.send("API is running...");
