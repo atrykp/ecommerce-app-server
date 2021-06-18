@@ -89,13 +89,21 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
 
 export const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
-
   if (users) {
-    res.json({
-      users,
-    });
+    res.json(users);
   } else {
     res.status(404);
     throw new Error("there is no user");
+  }
+});
+export const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.remove();
+    res.json({ message: "User removed" });
+  } else {
+    res.status(404);
+    throw new Error("There is no user");
   }
 });
